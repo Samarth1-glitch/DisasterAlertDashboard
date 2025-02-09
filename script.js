@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", fetchDisasterAlerts);
 
         async function fetchDisasterAlerts() {
             const usgsApi = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.geojson";
-            const gdacsApi = "https://www.gdacs.org/xml/rss.xml"; // Placeholder, since GDACS uses RSS (needs parsing)
+            const gdacsApi = "https://www.gdacs.org/xml/rss.xml"; 
             
             try {
                 const response = await fetch(usgsApi);
@@ -30,8 +30,6 @@ document.addEventListener("DOMContentLoaded", fetchDisasterAlerts);
                 document.getElementById("alerts").innerHTML = "Failed to load alerts.";
             }
         }
-
-        // Map Initialization
         const map = L.map("map").setView([20, 0], 2);
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
             attribution: "&copy; OpenStreetMap contributors"
@@ -57,9 +55,8 @@ document.addEventListener("DOMContentLoaded", fetchDisasterAlerts);
                 lat = geoData[0].lat;
                 lon = geoData[0].lon;
             }
-
-            // Fetch weather data using OpenWeather API
-            const weatherApiKey = "fecc4ddc6ba757a6fe98255e4a79c6ce"; // Replace with your OpenWeather API key
+                
+            const weatherApiKey = "fecc4ddc6ba757a6fe98255e4a79c6ce"; 
             const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=metric`;
             try {
                 const weatherResponse = await fetch(weatherUrl);
@@ -79,7 +76,7 @@ document.addEventListener("DOMContentLoaded", fetchDisasterAlerts);
                 document.getElementById("weather").innerHTML = "Failed to load weather data.";
             }
 
-            // Fetch help centers using Overpass API
+         
             const overpassUrl = `https://overpass-api.de/api/interpreter?data=[out:json];node[amenity=hospital](around:10000,${lat},${lon});out;`;
             try {
                 const response = await fetch(overpassUrl);
@@ -101,15 +98,13 @@ document.addEventListener("DOMContentLoaded", fetchDisasterAlerts);
                         centerItem.innerHTML = `<strong>${centerName}</strong> - (${center.lat}, ${center.lon})`;
                         centersContainer.appendChild(centerItem);
 
-                        // Add marker to map
                         const marker = L.marker([center.lat, center.lon])
                             .addTo(map)
                             .bindPopup(`<b>${centerName}</b>`);
-
-                        // Add click event to center item
+                            
                         centerItem.addEventListener("click", () => {
-                            map.setView([center.lat, center.lon], 15); // Zoom to the location
-                            marker.openPopup(); // Open the marker's popup
+                            map.setView([center.lat, center.lon], 15); 
+                            marker.openPopup(); 
                         });
                     });
                 } else {
