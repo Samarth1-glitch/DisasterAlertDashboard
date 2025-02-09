@@ -1,5 +1,5 @@
-/* General Reset */
-* {
+ /* General Reset */
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -128,6 +128,19 @@ button:hover {
     border-radius: 8px;
     border: 1px solid #ddd;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+#help-centers div, #weather div {
+    padding: 15px;
+    margin-bottom: 12px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+#help-centers div:hover, #weather div:hover {
+    background: #f9f9f9;
 }
 
 /* Map Styling */
