@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Alert Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body>
+    <header>
+        Disaster Alert Dashboard
+    </header>
+    <main>
+        <section>
+            <h2>Live Disaster Alerts</h2>
+            <div id="alerts">Loading...</div>
+        </section>
+
+        <section>
+            <h2>Search for Help Centers</h2>
+            <input type="text" id="location" placeholder="Enter city or coordinates">
+            <button onclick="findHelpCenters()">Search</button>
+            <div id="help-centers"></div>
+            <div id="weather"></div>
+        </section>
+
+        <section>
+            <h2>Help Centers Map</h2>
+            <div id="map"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
